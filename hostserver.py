@@ -9,7 +9,7 @@ Fixes R1_BLOCKED and the FETCH_ERR:timeout storm by:
   - only re-fire when the promise is genuinely dead
   - acw_tc + acw_sc__v2 both captured after the fetch fully resolves
 
-Kept:
+  Kept:
   - cycle reset every WAF_CYCLE_EVERY solves
   - timeout watchdog + dead-batch watchdog
   - pending_logins queue, kill_gen, monitor page, Cloudflare tunnel
@@ -2633,7 +2633,7 @@ if __name__ == '__main__':
         TOKEN_FILE = os.path.abspath(args.tokens)
     else:
         TOKEN_FILE = os.path.join(script_dir, 'tokens.txt')
-    print(f"\n  \033[96mWAF SOLVER — browser-backed warm-pool + login proxy\033[0m")
+    print(f"  \033[96mWAF SOLVER — browser-backed warm-pool + login proxy\033[0m")
     print(f"  \033[96mCycle: auto-reload every {CYCLE_EVERY} solves, 3-fail streak\033[0m")
     print(f"  \033[96mWarm pool: {WARM_SIZE} pages | solve timeout: {WAF_FETCH_TIMEOUT_S}s\033[0m")
     proxy_path = args.proxies
