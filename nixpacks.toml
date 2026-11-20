@@ -45,7 +45,14 @@ cmds = [
 cmds = [
   "echo build complete",
 ]
+[phases.setup]
+nixPkgs = ["...", "chromium"]
 
+[phases.install]
+cmds = [
+  "pip install -r requirements.txt",
+  "python -m playwright install chromium --with-deps"
+]
 [start]
 cmd = "python hostserver.py --host 0.0.0.0 --port $PORT --no-tunnel --proxies proxies.txt --warm-pages ${WAF_WARM_PAGES:-2} --solve-timeout ${WAF_SOLVE_TIMEOUT:-45}"
 
